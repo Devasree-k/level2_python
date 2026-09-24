@@ -2,22 +2,22 @@
 
 students = [
     {
-        "name": "Anu",
+        "student_name": "Anu",
         "department": "Computer Science",
         "mark": 85
     },
     {
-        "name": "Priya",
+        "student_name": "Priya",
         "department": "Computer Science",
         "mark": 92
     },
     {
-        "name": "Kayal",
+        "student_name": "Kayal",
         "department": "Information Technology",
         "mark": 68
     },
     {
-        "name": "Divya",
+        "student_name": "Divya",
         "department": "Computer Technology",
         "mark": 45
     }
@@ -29,7 +29,7 @@ PASS_MARK = 40
 
 def get_grade(mark: int) -> str:
 
-    match mark:
+    match mark:      # match case
         case mark if mark >= 90:
             return "A+"
         case mark if mark >= 80:
@@ -44,7 +44,7 @@ def get_grade(mark: int) -> str:
             return "F"
 
 
-def get_passed_students(
+def get_passed_students(      
     students: list[dict]
 ) -> list[dict]:
 
@@ -81,7 +81,7 @@ def get_student_grades(
 ) -> dict[str, str]:
 
     return {
-        student["name"]: get_grade(student["mark"])
+        student["student_name"]: get_grade(student["mark"])
         for student in students
     }
 
@@ -96,7 +96,7 @@ def display_students(
     ):
         print(
             f"{number}. "
-            f"{student['name']} - "
+            f"{student['student_name']} - "
             f"{student['department']} - "
             f"{student['mark']} - "
             f"{get_grade(student['mark'])}"
@@ -164,7 +164,7 @@ def search_student(
     return [
         student
         for student in students
-        if student["name"].lower() == name.lower()
+        if student["student_name"].lower() == student_name.lower()
     ]
 
 
@@ -227,11 +227,11 @@ while True:
             print(get_student_grades(students))
 
         case "9":
-            name = input("Enter student name: ")
+            student_name = input("Enter student name: ")
 
             result = search_student(
                 students,
-                name
+                student_name
             )
 
             if result:

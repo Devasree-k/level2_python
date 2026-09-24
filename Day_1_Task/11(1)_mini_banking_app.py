@@ -17,7 +17,6 @@ while True:
     match choice:
 
         case "1":
-            # Create Account
 
             if account:
                 print("Account already exists!")
