@@ -75,7 +75,7 @@ def sum_of_digits(num):
 
 while True:
 
-    print("\n===== NUMBER ANALYZER =====")
+    print("NUMBER ANALYZER")
     print("1. Check Even/Odd")
     print("2. Check Prime")
     print("3. Check Palindrome")

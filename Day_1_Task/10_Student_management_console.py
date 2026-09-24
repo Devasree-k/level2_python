@@ -25,7 +25,7 @@ def view_students():
     if not students:
         print("No students found.")
     else:
-        print("\n===== STUDENTS =====")
+        print("STUDENTS")
 
         for student in students:
             print("Name:", student["name"])
@@ -35,7 +35,6 @@ def view_students():
 
 def search_student():
     name = input("Enter student name to search: ")
-
     found = False
 
     for student in students:
@@ -74,7 +73,7 @@ def find_topper():
             if student["mark"] > topper["mark"]:
                 topper = student
 
-        print("\n===== TOPPER =====")
+        print("TOPPER")
         print("Name:", topper["name"])
         print("Mark:", topper["mark"])
 
@@ -98,10 +97,9 @@ def display_passed_students():
             )
 
 
-# Main Menu
 while True:
 
-    print("\n===== STUDENT MANAGEMENT =====")
+    print("STUDENT MANAGEMENT")
     print("1. Add Student")
     print("2. View Students")
     print("3. Search Student")
@@ -133,7 +131,7 @@ while True:
             display_passed_students()
 
         case 7:
-            print("Thank you!")
+            print("Thank you ..")
             break
 
         case _:

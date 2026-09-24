@@ -1,138 +1,64 @@
-# List Collection - All Functionalities
 
-# 1. Creating a List
+# Creating a list
 numbers = [10, 20, 30, 40, 50]
-
 print("Original List:", numbers)
 
-
-# 2. Accessing Elements
-print("\n===== ACCESSING ELEMENTS =====")
+# Accessing elements
 print("First element:", numbers[0])
-print("Second element:", numbers[1])
 print("Last element:", numbers[-1])
 
-
-# 3. Adding Elements - append()
+# Adding elements
 numbers.append(60)
-print("\nAfter append():", numbers)
+print("After append:", numbers)
 
-
-# 4. Adding Element at a Specific Position - insert()
 numbers.insert(2, 25)
-print("After insert():", numbers)
+print("After insert:", numbers)
 
-
-# 5. Adding Multiple Elements - extend()
+# Adding multiple elements
 numbers.extend([70, 80])
-print("After extend():", numbers)
+print("After extend:", numbers)
 
+# Updating an element
+numbers[1] = 200
+print("After update:", numbers)
 
-# 6. Updating an Element
-numbers[0] = 5
-print("After updating first element:", numbers)
+# Removing an element
+numbers.remove(30)
+print("After remove:", numbers)
 
+# Removing element using index
+numbers.pop()
+print("After pop:", numbers)
 
-# 7. Removing an Element - remove()
-numbers.remove(25)
-print("After remove():", numbers)
+# List slicing
+print("Sliced List:", numbers[1:4])
 
+# Searching
+if 40 in numbers:
+    print("40 is present in the list")
 
-# 8. Removing Last Element - pop()
-removed = numbers.pop()
-print("Removed element:", removed)
-print("After pop():", numbers)
+# length
+print("Length:", len(numbers))
 
+# Sorting
+numbers.sort()
+print("Sorted List:", numbers)
 
-# 9. Removing Element using Index - pop(index)
-removed = numbers.pop(1)
-print("Removed element at index 1:", removed)
-print("After pop(1):", numbers)
+# Reverse
+numbers.reverse()
+print("Reversed List:", numbers)
 
-
-# 10. Finding Length - len()
-print("\n===== LIST INFORMATION =====")
-print("Length of list:", len(numbers))
-
-
-# 11. Searching - in
-if 30 in numbers:
-    print("30 is present in the list.")
-else:
-    print("30 is not present in the list.")
-
-
-# 12. Finding Position - index()
-print("Position of 40:", numbers.index(40))
-
-
-# 13. Counting Elements - count()
+# Count occurrences
 numbers.append(40)
 print("Count of 40:", numbers.count(40))
 
+# Find index
+print("Index of 40:", numbers.index(40))
 
-# 14. Sorting - sort()
-numbers.sort()
-print("After sort():", numbers)
-
-
-# 15. Reverse - reverse()
-numbers.reverse()
-print("After reverse():", numbers)
-
-
-# 16. Copying a List - copy()
+# Copy
 new_list = numbers.copy()
 print("Copied List:", new_list)
 
-
-# 17. Slicing
-print("\n===== SLICING =====")
-print("First 3 elements:", numbers[:3])
-print("Last 3 elements:", numbers[-3:])
-print("Elements from index 1 to 3:", numbers[1:4])
-
-
-# 18. Looping through List
-print("\n===== LOOPING =====")
-for number in numbers:
-    print(number)
-
-
-# 19. List Concatenation
-list1 = [1, 2, 3]
-list2 = [4, 5, 6]
-
-combined = list1 + list2
-print("\nConcatenated List:", combined)
-
-
-# 20. Repeating a List
-repeated = [1, 2] * 3
-print("Repeated List:", repeated)
-
-
-# 21. Clearing the List - clear()
-temp = [100, 200, 300]
-print("\nBefore clear():", temp)
-
-temp.clear()
-print("After clear():", temp)
-
-
-# 22. Deleting a List
-temp2 = [1, 2, 3]
-del temp2
-print("\nList deleted successfully.")
-
-
-# 23. List Comprehension
-squares = [x * x for x in range(1, 6)]
-print("\n===== LIST COMPREHENSION =====")
-print("Squares:", squares)
-
-
-# 24. List Comprehension with Condition
-even_numbers = [x for x in range(1, 11) if x % 2 == 0]
-print("Even Numbers:", even_numbers)
-
+# clear
+numbers.clear()
+print("After clear:", numbers)

@@ -2,11 +2,10 @@
 
 accounts = []
 
-
 def create_account():
     account_number = input("Enter account number: ")
 
-    # Check whether account already exists
+    # Check account already exists
     for account in accounts:
         if account["account_number"] == account_number:
             print("Account already exists!")
@@ -14,19 +13,15 @@ def create_account():
 
     name = input("Enter account holder name: ")
 
-    # Validate initial deposit
+    # Validate the initial deposit
     while True:
-        try:
-            balance = float(input("Enter initial deposit: "))
+        balance = float(input("Enter initial deposit: "))
+        if balance >= 0:
+            break
+        else:
+            print("Initial deposit cannot be negative.")
 
-            if balance >= 0:
-                break
-            else:
-                print("Initial deposit cannot be negative.")
-
-        except ValueError:
-            print("Please enter a valid amount.")
-
+       
     account = {
         "account_number": account_number,
         "name": name,
@@ -36,12 +31,8 @@ def create_account():
 
     # Add initial transaction
     if balance > 0:
-        account["transactions"].append(
-            f"Initial deposit: ₹{balance:.2f}"
-        )
-
+        account["transactions"].append(f"Initial deposit: ₹{balance}")
     accounts.append(account)
-
     print("Account created successfully!")
 
 
@@ -63,22 +54,16 @@ def deposit():
         return
 
     while True:
-        try:
-            amount = float(input("Enter deposit amount: "))
+        amount = float(input("Enter deposit amount: "))
 
-            if amount > 0:
-                break
-            else:
-                print("Amount must be greater than 0.")
+        if amount > 0:
+            break
+        else:
+            print("Amount must be greater than 0.")
 
-        except ValueError:
-            print("Please enter a valid amount.")
-
+        
     account["balance"] += amount
-
-    account["transactions"].append(
-        f"Deposited: ₹{amount:.2f}"
-    )
+    account["transactions"].append(f"Deposited: ₹{amount}")
 
     print("Deposit successful!")
     print("New Balance: ₹", account["balance"])
@@ -86,32 +71,26 @@ def deposit():
 
 def withdraw():
     account = find_account()
-
     if account is None:
         print("Account not found!")
         return
 
     while True:
-        try:
-            amount = float(input("Enter withdrawal amount: "))
+        amount = float(input("Enter withdrawal amount: "))
 
-            if amount <= 0:
-                print("Amount must be greater than 0.")
+        if amount <= 0:
+            print("Amount must be greater than 0.")
 
-            elif amount > account["balance"]:
-                print("Insufficient balance!")
+        elif amount > account["balance"]:
+            print("Insufficient balance!")
 
-            else:
-                break
+        else:
+            break
 
-        except ValueError:
-            print("Please enter a valid amount.")
-
+        
     account["balance"] -= amount
 
-    account["transactions"].append(
-        f"Withdrawn: ₹{amount:.2f}"
-    )
+    account["transactions"].append(f"Withdrawn: ₹{amount}")
 
     print("Withdrawal successful!")
     print("Remaining Balance: ₹", account["balance"])
@@ -124,7 +103,7 @@ def check_balance():
         print("Account not found!")
         return
 
-    print("\n===== ACCOUNT DETAILS =====")
+    print("ACCOUNT DETAILS")
     print("Account Number:", account["account_number"])
     print("Account Holder:", account["name"])
     print("Balance: ₹", account["balance"])
@@ -137,7 +116,7 @@ def transaction_history():
         print("Account not found!")
         return
 
-    print("\n===== TRANSACTION HISTORY =====")
+    print("TRANSACTION HISTORY")
 
     if not account["transactions"]:
         print("No transactions found.")
@@ -146,10 +125,9 @@ def transaction_history():
             print(transaction)
 
 
-# Main Menu
 while True:
 
-    print("\n===== MINI BANKING APPLICATION =====")
+    print("MINI BANKING APPLICATION")
     print("1. Create Account")
     print("2. Deposit")
     print("3. Withdraw")
