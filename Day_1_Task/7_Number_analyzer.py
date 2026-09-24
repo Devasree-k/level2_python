@@ -1,9 +1,9 @@
-def calculateDigit(n):
-    count = 0
-    while n > 0:
-        n = n // 10
-        count += 1
-    return count
+# def calculateDigit(n):
+#     count = 0
+#     while n > 0:
+#         n = n // 10
+#         count += 1
+#     return count
  
 def sumDigit (n) :
     sum = 0
@@ -50,17 +50,24 @@ def armstrongCheck(n,count):
         temp = temp // 10
  
     if sum == n:
-        return "an Armstrong"
+        return "Armstrong Number"
     else :
-        return "not an Armstrong"
+        return "Not an Armstrong Number"
  
 number = int(input ("Enter the number :"))
-digits=calculateDigit(number)
-print("Number of digits :" ,digits)
+# digits=calculateDigit(number)
+
+# print("Number of digits :" ,digits)
+
+print("Number of digits :" ,len(str(number)))
+
+
 print("Sum of digits :" ,sumDigit(number))
 print("Product of digits :" ,productDigit(number))
 reversed = reverse(number)
 print("Reversed :" ,reversed)
 print(number ,"is an",oddEvenCheck(number) ,"number")
 print(number ,"is",palindromeCheck(number,reversed) ,"number")
-print(number,"is",armstrongCheck(number,digits),"number")
+# print(number,"is",armstrongCheck(number,digits),"number")
+
+print(number,"is",armstrongCheck(number,len(str(number))),"number")

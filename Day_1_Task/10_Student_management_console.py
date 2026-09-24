@@ -1,9 +1,9 @@
 # Student Management Console
 
 students = [
-    {"name": "Arun", "mark": 85},
+    {"name": "Anu", "mark": 85},
     {"name": "Priya", "mark": 92},
-    {"name": "Kumar", "mark": 67}
+    {"name": "Kayal", "mark": 67}
 ]
 
 
@@ -136,6 +136,117 @@ while True:
 
         case _:
             print("Invalid choice! Please enter 1 to 7.")
+
+
+
+
+
+
+# students = [
+#         {"name": "Anu", "mark": 85},
+#         {"name": "Priya", "mark": 92},
+#         {"name": "Kayal", "mark": 67}
+#     ]
+
+# while True:
+
+    
+#     print("STUDENT MANAGEMENT")
+#     print("1. Add Student")
+#     print("2. View Students")
+#     print("3. Search Student")
+#     print("4. Calculate Average")
+#     print("5. Find Topper")
+#     print("6. Display Passed Students")
+#     print("7. Exit")
+
+#     choice = int(input("Enter your choice: "))
+
+#     match choice:
+#         case 1:
+#             name = input("Enter student name: ")
+#             mark = int(input("Enter mark: "))
+#             student = {
+#                 "name": name,
+#                 "mark": mark
+#             }
+#             students.append(student)
+        
+#             print("Student added successfully!")
+
+#         case 2:
+#             if not students:
+#                 print("No students found.")
+#             else:
+#                 print("STUDENTS")
+        
+#                 for student in students:
+#                     print("Name:", student["name"])
+#                     print("Mark:", student["mark"])
+#                     print("--------------------")
+
+#         case 3:
+#             name = input("Enter student name to search: ")
+#             found = False
+        
+#             for student in students:
+#                 if student["name"].lower() == name.lower():
+#                     print("Student Found!")
+#                     print("Name:", student["name"])
+#                     print("Mark:", student["mark"])
+#                     found = True
+#                     break
+#             if not found:
+#                 print("Student not found.")
+
+#         case 4:
+#             if not students:
+#                 print("No students available.")
+#             else:
+#                 total = 0
+#                 for student in students:
+#                     total += student["mark"]
+        
+#                 average = total / len(students)
+#                 print("Average Mark:", average)
+
+#         case 5:
+#             if not students:
+#                 print("No students available.")
+#             else:
+#                 topper = students[0]
+
+#                 for student in students:
+#                     if student["mark"] > topper["mark"]:
+#                         topper = student
+        
+#                 print("TOPPER")
+#                 print("Name:", topper["name"])
+#                 print("Mark:", topper["mark"])
+
+#         case 6:
+#             passed_students = [
+#                 student for student in students
+#                 if student["mark"] >= 40
+#             ]
+        
+#             if not passed_students:
+#                 print("No passed students.")
+#             else:
+#                 print("PASSED STUDENTS")
+        
+#                 for student in passed_students:
+#                     print(
+#                         "Name:", student["name"],
+#                         "| Mark:", student["mark"]
+#                     )
+
+#         case 7:
+#             print("Thank you ..")
+#             break
+
+#         case _:
+#             print("Invalid choice! Please enter 1 to 7.")
 
 
 
