@@ -1,0 +1,7 @@
+product_id,product_name,category,price
+P001,Laptop,Electronics,55000
+P002,Mouse,Electronics,800
+P003,Keyboard,Electronics,1500
+P004,Notebook,Stationery,80
+P005,Pen,Stationery,20
+P006,Headphones,Electronics,2000

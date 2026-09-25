@@ -1,0 +1,14 @@
+product_id,quantity,total_value,status
+
+P001,10,550000.0,Available
+
+P002,25,20000.0,Available
+
+P003,3,4500.0,Low Stock
+
+P004,50,4000.0,Available
+
+P005,8,160.0,Available
+
+P006,3,6000.0,Low Stock
+
