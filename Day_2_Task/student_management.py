@@ -23,9 +23,7 @@ students = [
     }
 ]
 
-
 PASS_MARK = 40
-
 
 def get_grade(mark: int) -> str:
 
@@ -169,8 +167,7 @@ def search_student(
 
 
 while True:
-
-    print("\n===== STUDENT PERFORMANCE ANALYZER =====")
+    print(" STUDENT PERFORMANCE ANALYZER")
     print("1. Display Students")
     print("2. Passed Students")
     print("3. Failed Students")
@@ -188,42 +185,42 @@ while True:
     match choice:
 
         case "1":
-            print("\nSTUDENTS")
+            print("STUDENTS")
             display_students(students)
 
         case "2":
-            print("\nPASSED STUDENTS")
+            print("PASSED STUDENTS")
             display_students(
                 get_passed_students(students)
             )
 
         case "3":
-            print("\nFAILED STUDENTS")
+            print("FAILED STUDENTS")
             display_students(
                 get_failed_students(students)
             )
 
         case "4":
             average = calculate_average(students)
-            print(f"\nAverage Mark: {average:.2f}")
+            print(f"Average Mark: {average}")
 
         case "5":
             topper = find_topper(students)
 
-            print("\nTOPPER")
+            print("TOPPER")
             display_students([topper])
 
         case "6":
-            print("\nSTUDENT RANKINGS")
+            print("STUDENT RANKINGS")
             ranked_students = sort_by_marks(students)
             display_students(ranked_students)
 
         case "7":
-            print("\nDEPARTMENTS")
+            print("DEPARTMENTS")
             print(get_departments(students))
 
         case "8":
-            print("\nSTUDENT GRADES")
+            print("STUDENT GRADES")
             print(get_student_grades(students))
 
         case "9":
@@ -235,13 +232,13 @@ while True:
             )
 
             if result:
-                print("\nSTUDENT FOUND")
+                print("STUDENT FOUND")
                 display_students(result)
             else:
                 print("Student not found.")
 
         case "10":
-            print("\nRESULT CHECK")
+            print("RESULT CHECK")
 
             print(
                 "All students passed:",

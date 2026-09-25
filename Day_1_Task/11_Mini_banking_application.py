@@ -1,24 +1,18 @@
-# Mini Banking Application
+account: dict = {}
 
-account = {}
-
-
-def create_account():
-    global account
+def create_account(account: dict) -> dict:
 
     if account:
         print("Account already exists!")
-        return
+        return account
 
-    account_number = input("Enter account number: ")
-    name = input("Enter account holder name: ")
+    account_number: str = input("Enter account number: ")
+    name: str = input("Enter account holder name: ")
 
     while True:
-        balance = float(input("Enter initial deposit: "))
-
+        balance: float = float(input("Enter initial deposit: "))
         if balance >= 0:
             break
-
         print("Initial deposit cannot be negative.")
 
     account = {
@@ -29,36 +23,46 @@ def create_account():
     }
 
     if balance > 0:
-        account["transactions"].append(f"Initial deposit: ₹{balance}" )
-
+        account["transactions"].append(
+            f"Initial deposit: ₹{balance}"
+        )
     print("Account created successfully!")
 
+    return account
 
-def deposit():
+
+def deposit(account: dict) -> None:
+
     if not account:
         print("Please create an account first.")
         return
 
     while True:
-        amount = float(input("Enter deposit amount: "))
+
+        amount: float = float(input("Enter deposit amount: "))
 
         if amount > 0:
             account["balance"] += amount
-            account["transactions"].append(f"Deposited: ₹{amount}")
+            account["transactions"].append(
+                f"Deposited: ₹{amount}"
+            )
+
             print("Deposit successful!")
+            print("New Balance: ₹", account["balance"])
             break
 
         print("Amount must be greater than 0.")
 
 
-def withdraw():
+def withdraw(account: dict) -> None:
+
     if not account:
         print("Please create an account first.")
         return
 
     while True:
-        amount = float(input("Enter withdrawal amount: "))
 
+        amount: float = float(input("Enter withdrawal amount: "))
         if amount <= 0:
             print("Amount must be greater than 0.")
 
@@ -70,27 +74,31 @@ def withdraw():
             account["transactions"].append(
                 f"Withdrawn: ₹{amount}"
             )
+
             print("Withdrawal successful!")
+            print("Remaining Balance: ₹", account["balance"])
             break
 
 
-def check_balance():
+def check_balance(account: dict) -> None:
+
     if not account:
         print("Please create an account first.")
         return
 
-    print("ACCOUNT DETAILS")
+    print("\nACCOUNT DETAILS")
     print("Account Number:", account["account_number"])
     print("Account Holder:", account["name"])
     print("Balance: ₹", account["balance"])
 
 
-def transaction_history():
+def transaction_history(account: dict) -> None:
+
     if not account:
         print("Please create an account first.")
         return
 
-    print("TRANSACTION HISTORY")
+    print("\nTRANSACTION HISTORY")
 
     if not account["transactions"]:
         print("No transactions found.")
@@ -102,7 +110,7 @@ def transaction_history():
 
 while True:
 
-    print("MINI BANKING APPLICATION ")
+    print("MINI BANKING APPLICATION")
     print("1. Create Account")
     print("2. Deposit")
     print("3. Withdraw")
@@ -110,24 +118,24 @@ while True:
     print("5. Transaction History")
     print("6. Exit")
 
-    choice = input("Enter your choice: ")
+    choice: str = input("Enter your choice: ")
 
     match choice:
 
         case "1":
-            create_account()
+            account = create_account(account)
 
         case "2":
-            deposit()
+            deposit(account)
 
         case "3":
-            withdraw()
+            withdraw(account)
 
         case "4":
-            check_balance()
+            check_balance(account)
 
         case "5":
-            transaction_history()
+            transaction_history(account)
 
         case "6":
             print("Thank you for using the banking application!")
@@ -135,7 +143,3 @@ while True:
 
         case _:
             print("Invalid choice! Please enter 1 to 6.")
-
-
-
-
