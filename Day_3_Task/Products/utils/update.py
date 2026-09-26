@@ -1,5 +1,5 @@
 
-from .inventory import(
+from .common import(
     read_stock,
     read_products,
     write_stock

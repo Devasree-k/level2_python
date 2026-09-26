@@ -1,4 +1,4 @@
-from .inventory import read_stock
+from .common import read_stock
 
 
 def check_low_stock():
@@ -9,7 +9,7 @@ def check_low_stock():
     found = False
 
     print("LOW STOCK PRODUCTS")
-    
+
     print(
         f"{'ID':<10}"
         f"{'QUANTITY':<12}"

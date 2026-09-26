@@ -1,4 +1,4 @@
-from .inventory import (
+from .common import (
     read_products,
     read_stock
 )
