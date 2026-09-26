@@ -22,6 +22,7 @@ def add_stock():
 
     if product is None:
         print(f"Product {product_id} does not exist in products.csv.")
+        return
     else:
         print(product)
 

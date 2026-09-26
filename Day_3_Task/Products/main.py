@@ -1,22 +1,44 @@
+from utils.inventory import APP_NAME
+
 from utils.view import (
-    # APP_NAME,
     view_products,
-    view_stock,
-    add_stock,
-    # update_stock,
-    # delete_stock
+    view_stock
 )
+
+from utils.add import (
+    add_stock
+)
+
+from utils.update import (
+    update_stock
+)
+
+from utils.delete import (
+    delete_stock
+)
+
+from utils.low_stock import (
+    check_low_stock
+)
+
+
+from utils.search import (
+    search_product
+)
+
 
 
 def display_menu():
 
-    # print(f" {APP_NAME} ")
+    print(f" {APP_NAME} ")
     print("1. View Products")
     print("2. View Stock")
     print("3. Add Stock Record")
     print("4. Update Stock")
     print("5. Delete Stock Record")
-    print("0. Exit")
+    print("6. Low stock record")
+    print("7. Search product")
+    print("8. Exit")
 
 
 while True:
@@ -39,14 +61,21 @@ while True:
                 add_stock()
 
             case 4:
-                pass
-                # update_stock()
+                # pass
+                update_stock()
 
             case 5:
-                pass
-                # delete_stock()
+                # pass
+                delete_stock()
 
             case 6:
+                check_low_stock()
+                
+
+            case 7:
+                search_product()
+
+            case 8:
                 print("Thank you!")
                 break
 
