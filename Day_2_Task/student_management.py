@@ -206,7 +206,6 @@ while True:
 
         case "5":
             topper = find_topper(students)
-
             print("TOPPER")
             display_students([topper])
 

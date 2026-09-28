@@ -3,12 +3,12 @@ from .common import (
     read_stock
 )
 
-def search_product():
+def search_product()->None:
 
     products = read_products()
     stock = read_stock()
 
-    product_id = input("Enter product ID to search: ").strip().upper()
+    product_id:str = input("Enter product ID to search: ").strip().upper() 
     product = None
     for p in products:
         if p["product_id"] == product_id:
@@ -39,3 +39,4 @@ def search_product():
 
     else:
         print("Stock       : No stock record")
+
