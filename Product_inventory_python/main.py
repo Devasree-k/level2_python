@@ -7,22 +7,6 @@ from utils.search import Search
 from utils.low_stock import LowStock
 from utils.report import Report
 
-
-# from utils.product import view_products
-# from utils.order import (
-#     place_order,
-#     view_orders
-# )
-# from utils.search import search_product
-# from utils.low_stock import (
-#     check_low_stock
-#     # generate_low_stock_report
-# )
-# # from utils.report import (
-# #     # generate_order_report,
-# #     calculate_inventory_value
-# # )
-
 class App:
     def __init__(self):
         self.common = Common()

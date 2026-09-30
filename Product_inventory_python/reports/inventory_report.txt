@@ -3,16 +3,16 @@
 ==================================================
 
 Total Products  : 6
-Total Units     : 95
-Inventory Value : 370920.00PRODUCT DETAILS
+Total Units     : 94
+Inventory Value : 315920.00PRODUCT DETAILS
 --------------------------------------------------
 
 Product ID : P001
 Product    : Laptop
 Category   : Electronics
 Price      : ₹55000.00
-Quantity   : 6
-Stock Value: ₹330000.00
+Quantity   : 5
+Stock Value: ₹275000.00
 --------------------------------------------------
 Product ID : P002
 Product    : Mouse
@@ -56,12 +56,17 @@ Stock Value: ₹160.00
 
 Low Stock Level : 5
 
-Total Low Stock Products : 1
+Total Low Stock Products : 2
 
 Product ID : P003
 Product    : Keyboard
 Category   : Electronics
 Quantity   : 2
+--------------------------------------------------
+Product ID : P001
+Product    : Laptop
+Category   : Electronics
+Quantity   : 5
 --------------------------------------------------
 
 ==================================================

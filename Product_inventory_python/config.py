@@ -1,32 +1,3 @@
-# import os
-# from pathlib import Path
-# from dotenv import load_dotenv
-
-# # Load environment variables from .env
-# load_dotenv()
-
-# # Directories
-# DATA_DIR = Path("data")
-# # REPORT_DIR = Path("reports")
-
-# # Data files
-# PRODUCT_FILE = DATA_DIR / "product.csv"
-# ORDER_FILE = DATA_DIR / "orders.csv"
-
-# # Report files
-# # ORDER_REPORT_FILE = REPORT_DIR / "order_report.txt"
-# # INVENTORY_REPORT_FILE = REPORT_DIR / "inventory_report.txt"
-# # LOW_STOCK_REPORT_FILE = REPORT_DIR / "low_stock_report.txt"
-
-# # Application settings
-# APP_NAME = os.getenv("APP_NAME","Product Inventory System")
-
-# LOW_STOCK_LEVEL = int(os.getenv("LOW_STOCK_LEVEL","5"))
-
-
-
-
-
 import os
 from pathlib import Path
 from dotenv import load_dotenv
