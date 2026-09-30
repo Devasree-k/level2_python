@@ -1,18 +1,12 @@
-
-
 from config import REPORT_FILE, LOW_STOCK_LEVEL
-from utils.common import Common
+from repositories.csv_repository import CSVRepository
+from utilities.inventory_utilities import get_low_stock_products
 
-class Report:
-    def __init__(self, common: Common):
-        self.common = common
 
-    def get_low_stock_products(self, products: list[dict]) -> list[dict]:
-        return [
-            product
-            for product in products
-            if product["quantity"] <= LOW_STOCK_LEVEL
-        ]
+class ReportService:
+
+    def __init__(self, repository: CSVRepository):
+        self.repository = repository 
 
     def calculate_inventory_value(self, products: list[dict]) -> float:
         return sum(
@@ -21,14 +15,15 @@ class Report:
         )
 
     def generate_report(self) -> None:
-        products = self.common.read_products()
+        products = self.repository.read_products()
+
         if not products:
             print("No products available.")
             return
 
         total_products = len(products)
         total_units = sum(product["quantity"] for product in products)
-        total_inventory_value = self.calculate_inventory_value(products)
+        total_value = self.calculate_inventory_value(products)
 
         products_by_value = sorted(
             products,
@@ -36,42 +31,50 @@ class Report:
             reverse=True
         )
 
-        low_stock_products = self.get_low_stock_products(products)
+        low_stock_products = get_low_stock_products(products)
         low_stock_products.sort(key=lambda product: product["quantity"])
 
         try:
-            with open(REPORT_FILE, "w",encoding="utf-8") as file:
-                file.write("  INVENTORY REPORT\n")
+            REPORT_FILE.parent.mkdir(parents=True, exist_ok=True)
+
+            with open(REPORT_FILE, "w", encoding="utf-8") as file:
+
+                file.write("\n INVENTORY REPORT\n\n")
+
                 file.write(f"Total Products  : {total_products}\n")
                 file.write(f"Total Units     : {total_units}\n")
-                file.write(f"Inventory Value : {total_inventory_value:.2f}")
-                file.write("\n \nPRODUCT DETAILS\n")
+                file.write(f"Inventory Value : ₹{total_value:.2f}\n")
+
+                file.write("\nPRODUCT DETAILS\n\n")
 
                 for product in products_by_value:
                     product_value = product["price"] * product["quantity"]
+
                     file.write(f"Product ID : {product['product_id']}\n")
                     file.write(f"Product    : {product['product_name']}\n")
                     file.write(f"Category   : {product['category']}\n")
                     file.write(f"Price      : ₹{product['price']:.2f}\n")
                     file.write(f"Quantity   : {product['quantity']}\n")
-                    file.write(f"Stock Value: ₹{product_value:.2f}\n")
-                    file.write("\n")
+                    file.write(f"Stock Value: ₹{product_value:.2f}\n\n")
 
-                file.write("\n  LOW STOCK REPORT\n")
+                file.write("\n LOW STOCK REPORT\n\n")
 
                 file.write(f"Low Stock Level : {LOW_STOCK_LEVEL}\n\n")
 
                 if not low_stock_products:
                     file.write("No low-stock products.\n")
                 else:
-                    file.write(f"Total Low Stock Products : {len(low_stock_products)}\n\n")
+                    file.write(
+                        f"Total Low Stock Products : "
+                        f"{len(low_stock_products)}\n\n"
+                    )
+
                     for product in low_stock_products:
                         file.write(f"Product ID : {product['product_id']}\n")
                         file.write(f"Product    : {product['product_name']}\n")
                         file.write(f"Category   : {product['category']}\n")
                         file.write(f"Quantity   : {product['quantity']}\n")
-                        file.write("\n")
-
+                        file.write("-" * 50 + "\n")
 
 
             print("Complete report generated successfully.")
@@ -79,3 +82,5 @@ class Report:
 
         except OSError as error:
             print(f"Unable to generate report: {error}")
+
+

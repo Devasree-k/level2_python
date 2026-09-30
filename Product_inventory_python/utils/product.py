@@ -30,3 +30,5 @@ class Product:
         print(f"Price      : ₹{product['price']:.2f}")
         print(f"Quantity   : {product['quantity']}")
 
+        # in this file want the folder structure to include exception, services, utilties, repositories and have the respective code in the proper file with correct naming for each file and dont change the functionality use the concepts i mentioned already  
+

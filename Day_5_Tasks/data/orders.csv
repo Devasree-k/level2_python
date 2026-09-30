@@ -1,0 +1,2 @@
+order_id,product_id,quantity,unit_price,total_amount,status
+O001,P004,2,80.0,160.0,Completed
