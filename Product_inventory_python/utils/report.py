@@ -102,7 +102,6 @@
 from config import REPORT_FILE, LOW_STOCK_LEVEL
 from utils.common import Common
 
-
 class Report:
     def __init__(self, common: Common):
         self.common = common
@@ -140,13 +139,13 @@ class Report:
         low_stock_products.sort(key=lambda product: product["quantity"])
 
         try:
-            with open(REPORT_FILE, "w") as file:
+            with open(REPORT_FILE, "w",encoding="utf-8") as file:
                 file.write("=" * 50 + "\n")
                 file.write("              INVENTORY REPORT\n")
                 file.write("=" * 50 + "\n\n")
                 file.write(f"Total Products  : {total_products}\n")
                 file.write(f"Total Units     : {total_units}\n")
-                file.write(f"Inventory Value : ₹{total_inventory_value:.2f}\n\n")
+                file.write(f"Inventory Value : {total_inventory_value:.2f}")
                 file.write("PRODUCT DETAILS\n")
                 file.write("-" * 50 + "\n\n")
 
