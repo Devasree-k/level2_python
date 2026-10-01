@@ -1,0 +1,10 @@
+[
+    {
+        "order_id": "O001",
+        "product_id": "P001",
+        "quantity": 2,
+        "unit_price": 55000.0,
+        "total_amount": 110000.0,
+        "status": "Completed"
+    }
+]

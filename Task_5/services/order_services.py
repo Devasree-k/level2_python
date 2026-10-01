@@ -52,7 +52,7 @@ class OrderService:
             if quantity <= 0:
                 print("Quantity must be greater than zero.")
             elif quantity > selected_product["quantity"]:
-                print(f"Insufficient stock. Available: {selected_product['quantity']}")
+                raise InsufficientStockError(f"Insufficient stock. Available: {selected_product['quantity']}")
             else:
                 print("Product price is invalid.")
             return
