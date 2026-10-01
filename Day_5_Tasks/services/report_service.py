@@ -35,7 +35,7 @@ class ReportService:
         low_stock_products.sort(key=lambda product: product["quantity"])
 
         try:
-            REPORT_FILE.parent.mkdir(parents=True, exist_ok=True)
+            # REPORT_FILE.parent.mkdir(parents=True, exist_ok=True)
 
             with open(REPORT_FILE, "w", encoding="utf-8") as file:
 

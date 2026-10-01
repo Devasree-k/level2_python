@@ -56,3 +56,30 @@ class StockService:
                 f"{product['product_name']} | "
                 f"Stock: {product['quantity']}"
             )
+
+    def check_out_of_stock(self):
+        products = self.repository.read_products()
+        if not products:
+            print("No products available. ")
+            return
+
+        has_out_of_stock = any(product["quantity"]==0 for product in products)
+
+        if has_out_of_stock:
+            print("Some products are out of stock.")
+
+            out_of_stock_products = [
+                product for product in products
+                if product["quantity"] == 0
+            ]
+
+            for product in out_of_stock_products:
+                print(
+                    f"{product['product_id']} | "
+                    f"{product['product_name']}"
+                )
+
+        else:
+            print("No products are out of stock.")
+
+        

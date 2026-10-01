@@ -1,6 +1,6 @@
 from repositories.csv_repository import CSVRepository
 from services.product_services import ProductService
-
+from exceptions.inventory_exceptions import (ProductNotFoundError, InsufficientStockError)
 
 class OrderService:
 
@@ -46,8 +46,7 @@ class OrderService:
         selected_product = self.product.find_product(products, product_id)
 
         if selected_product is None:
-            print("Product not found.")
-            return
+            raise ProductNotFoundError("Product doesn't exist. ")
 
         if not self.validate_order(selected_product, quantity):
             if quantity <= 0:

@@ -7,6 +7,7 @@ from services.order_services import OrderService
 from services.search_services import SearchService
 from services.stock_services import StockService
 from services.report_service import ReportService
+from services.product_detail_service import ProductDetailService
 
 
 class App:
@@ -19,6 +20,7 @@ class App:
         self.search = SearchService(self.repository, self.product)
         self.stock = StockService(self.repository)
         self.report = ReportService(self.repository)
+        self.product_detail = ProductDetailService(self.repository)
 
     def display_menu(self) -> None:
         print(f"  {APP_NAME}   ")
@@ -30,6 +32,7 @@ class App:
         print("6. Check Low Stock")
         print("7. Check High Stock")
         print("8. Generate inventory and low stock report")
+        print("9. Display product details")
         print("0. Exit")
 
     def run(self) -> None:
@@ -63,6 +66,9 @@ class App:
 
                     case 8:
                         self.report.generate_report()
+
+                    case 9:
+                        self.product_detail.display_product_details()
 
                     case 0:
                         print("Thank you")

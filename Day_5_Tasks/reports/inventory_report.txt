@@ -1,60 +1,56 @@
-==================================================
-              INVENTORY REPORT
-==================================================
+
+ INVENTORY REPORT
 
 Total Products  : 6
-Total Units     : 92
-Inventory Value : ₹315760.00
+Total Units     : 89
+Inventory Value : ₹259880.00
 
 PRODUCT DETAILS
---------------------------------------------------
 
 Product ID : P001
 Product    : Laptop
 Category   : Electronics
 Price      : ₹55000.00
-Quantity   : 5
-Stock Value: ₹275000.00
---------------------------------------------------
+Quantity   : 4
+Stock Value: ₹220000.00
+
 Product ID : P002
 Product    : Mouse
 Category   : Electronics
 Price      : ₹800.00
-Quantity   : 25
-Stock Value: ₹20000.00
---------------------------------------------------
+Quantity   : 24
+Stock Value: ₹19200.00
+
 Product ID : P006
 Product    : Headphones
 Category   : Electronics
 Price      : ₹2000.00
 Quantity   : 7
 Stock Value: ₹14000.00
---------------------------------------------------
+
 Product ID : P004
 Product    : Notebook
 Category   : Stationery
 Price      : ₹80.00
-Quantity   : 45
-Stock Value: ₹3600.00
---------------------------------------------------
+Quantity   : 44
+Stock Value: ₹3520.00
+
 Product ID : P003
 Product    : Keyboard
 Category   : Electronics
 Price      : ₹1500.00
 Quantity   : 2
 Stock Value: ₹3000.00
---------------------------------------------------
+
 Product ID : P005
 Product    : Pen
 Category   : Stationery
 Price      : ₹20.00
 Quantity   : 8
 Stock Value: ₹160.00
---------------------------------------------------
 
-==================================================
-              LOW STOCK REPORT
-==================================================
+
+ LOW STOCK REPORT
 
 Low Stock Level : 5
 
@@ -68,9 +64,5 @@ Quantity   : 2
 Product ID : P001
 Product    : Laptop
 Category   : Electronics
-Quantity   : 5
+Quantity   : 4
 --------------------------------------------------
-
-==================================================
-              END OF REPORT
-==================================================
