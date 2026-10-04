@@ -1,7 +1,7 @@
 import json
 from config import PRODUCT_FILE, ORDER_FILE
 
-class JSONRespository:
+class JSONRepository:
     def read_products(self)->list[dict]:
         try:
             with open(PRODUCT_FILE,"r")as file:
