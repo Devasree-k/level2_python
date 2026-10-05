@@ -1,6 +1,8 @@
 from repositories.json_repository import JSONRepository
 from services.product_services import ProductService
 
+from models.order_model import Order
+
 
 class OrderService:
 
@@ -8,11 +10,11 @@ class OrderService:
         self.repository = repository
         self.product = product
 
-    def generate_order_id(self, orders: list[dict]) -> str:
+    def generate_order_id(self, orders: list[Order]) -> str:
         numbers = [
-            int(order["order_id"][1:])
+            int(order.order_id[1:])
             for order in orders
-            if order["order_id"][1:].isdigit()
+            if order.order_id[1:].isdigit()
         ]
 
         return f"O{max(numbers, default=0) + 1:03d}"
@@ -20,15 +22,15 @@ class OrderService:
     def calculate_order_amount(self, price: float, quantity: int) -> float:
         return price * quantity
 
-    def validate_order(self, product: dict, quantity: int) -> bool:
+    def validate_order(self, product: Order, quantity: int) -> bool:
         return all([
             quantity > 0,
-            quantity <= product["quantity"],
-            product["price"] > 0
+            quantity <= product.quantity,
+            product.price > 0
         ])
 
-    def place_order(self) -> None:
-        products = self.repository.read_products()
+    async def place_order(self) -> None:
+        products = await self.repository.read_products()
         orders = self.repository.read_orders()
 
         if not products:
@@ -52,28 +54,28 @@ class OrderService:
         if not self.validate_order(selected_product, quantity):
             if quantity <= 0:
                 print("Quantity must be greater than zero.")
-            elif quantity > selected_product["quantity"]:
-                print(f"Insufficient stock. Available: {selected_product['quantity']}")
+            elif quantity > selected_product.quantity:
+                print(f"Insufficient stock. Available: {selected_product.quantity}")
             else:
                 print("Product price is invalid.")
             return
 
         total_amount = self.calculate_order_amount(
-            selected_product["price"], quantity
+            selected_product.price, quantity
         )
 
         order_id = self.generate_order_id(orders)
 
         order = {
             "order_id": order_id,
-            "product_id": selected_product["product_id"],
+            "product_id": selected_product.product_id,
             "quantity": quantity,
-            "unit_price": selected_product["price"],
+            "unit_price": selected_product.price,
             "total_amount": total_amount,
             "status": "Completed"
         }
 
-        selected_product["quantity"] -= quantity
+        selected_product.quantity -= quantity
         orders.append(order)
 
         self.repository.write_products(products)
@@ -81,11 +83,11 @@ class OrderService:
 
         print("ORDER SUCCESS")
         print(f"Order ID        : {order_id}")
-        print(f"Product         : {selected_product['product_name']}")
+        print(f"Product         : {selected_product.product_name}")
         print(f"Quantity        : {quantity}")
-        print(f"Unit Price      : ₹{selected_product['price']:.2f}")
+        print(f"Unit Price      : ₹{selected_product.price:.2f}")
         print(f"Total Amount    : ₹{total_amount:.2f}")
-        print(f"Remaining Stock : {selected_product['quantity']}")
+        print(f"Remaining Stock : {selected_product.quantity}")
         print("Status          : Completed")
 
     def view_orders(self) -> None:
@@ -100,10 +102,10 @@ class OrderService:
 
         for order in orders:
             print(
-                f"{order['order_id']:<10}"
-                f"{order['product_id']:<10}"
-                f"{order['quantity']:<10}"
-                f"₹{order['unit_price']:<13.2f}"
-                f"₹{order['total_amount']:<13.2f}"
-                f"{order['status']:<12}"
+                f"{order.order_id:<10}"
+                f"{order.product_id:<10}"
+                f"{order.quantity:<10}"
+                f"₹{order.unit_price:<13.2f}"
+                f"₹{order.total_amount:<13.2f}"
+                f"{order.status:<12}"
             )

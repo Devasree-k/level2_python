@@ -1,18 +1,18 @@
 from config import LOW_STOCK_LEVEL, HIGH_STOCK_LEVEL
+
 from repositories.json_repository import JSONRepository
 from utilities.inventory_utilities import (
     get_low_stock_products,
     get_high_stock_products
 )
 
-
 class StockService:
 
     def __init__(self, repository: JSONRepository):
         self.repository = repository
 
-    def check_low_stock(self) -> None:
-        products = self.repository.read_products()
+    async def check_low_stock(self) -> None:
+        products = await self.repository.read_products()
 
         if not products:
             print("No products available.")
@@ -29,13 +29,13 @@ class StockService:
 
         for product in products:
             print(
-                f"{product['product_id']} | "
-                f"{product['product_name']} | "
-                f"Stock: {product['quantity']}"
+                f"{product.product_id} | "
+                f"{product.product_name} | "
+                f"Stock: {product.quantity}"
             )
 
-    def check_high_stock(self) -> None:
-        products = self.repository.read_products()
+    async def check_high_stock(self) -> None:
+        products = await self.repository.read_products()
 
         if not products:
             print("No products available.")
@@ -52,7 +52,7 @@ class StockService:
 
         for product in products:
             print(
-                f"{product['product_id']} | "
-                f"{product['product_name']} | "
-                f"Stock: {product['quantity']}"
+                f"{product.product_id} | "
+                f"{product.product_name} | "
+                f"Stock: {product.quantity}"
             )

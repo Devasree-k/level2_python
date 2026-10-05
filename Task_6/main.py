@@ -1,5 +1,7 @@
 from config import APP_NAME
 
+import asyncio
+
 from repositories.json_repository import JSONRepository
 
 from services.product_services import ProductService
@@ -35,7 +37,7 @@ class App:
         print("9. Display product details")
         print("0. Exit")
 
-    def run(self) -> None:
+    async def run(self) -> None:
         while True:
             self.display_menu()
 
@@ -44,31 +46,31 @@ class App:
 
                 match choice:
                     case 1:
-                        self.product.view_products()
+                        await self.product.view_products()
 
                     case 2:
-                        self.order.place_order()
+                        await self.order.place_order()
 
                     case 3:
                         self.order.view_orders()
 
                     case 4:
-                        self.search.search_product()
+                        await self.search.search_product()
 
                     case 5:
-                        self.search.search_by_name()
+                        await self.search.search_by_name()
 
                     case 6:
-                        self.stock.check_low_stock()
+                        await self.stock.check_low_stock()
 
                     case 7:
-                        self.stock.check_high_stock()
+                        await self.stock.check_high_stock()
 
                     case 8:
-                        self.report.generate_report()
+                        await self.report.generate_report()
 
                     case 9:
-                        self.product_detail.display_product_details()
+                        await self.product_detail.display_product_details()
 
                     case 0:
                         print("Thank you")
@@ -90,4 +92,6 @@ class App:
 
 if __name__ == "__main__":
     app = App()
-    app.run()
+    # app.run()
+    asyncio.run(app.run())
+

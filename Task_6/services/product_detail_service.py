@@ -6,13 +6,13 @@ class ProductDetailService:
     def __init__(self, repository: JSONRepository):
         self.repository = repository
 
-    def display_product_details(self) -> None:
-        products = self.repository.read_products()
+    async def display_product_details(self) -> None:
+        products = await self.repository.read_products()
         orders = self.repository.read_orders()
 
         if not products:
             print("No products available")
-            return
+            return  
 
         print("\n PRODUCT DETAILS\n")
 
@@ -29,24 +29,28 @@ class ProductDetailService:
 
         for product in products:
 
-            product_id = product["product_id"]
-            price = product["price"]
+            product_id = product.product_id
+            price = product.price
 
             sold = sum(
-                order["quantity"]
+                order.quantity
                 for order in orders
-                if order["product_id"] == product_id
+                if order.product_id == product_id
             )
 
-            remaining = product["quantity"]
-            opening_stock = remaining + sold
+            # remaining = product["quantity"]
+            # opening_stock = remaining + sold
+            # sales_revenue = price * sold
+            # stock_value = price * remaining
 
-            sales_revenue = price * sold
-            stock_value = price * remaining
+            remaining = product.quantity
+            opening_stock = remaining + sold
+            sales_revenue = product.price * sold
+            stock_value = product.price * remaining
 
             print(
-                f"{product['product_name']:<12}"
-                f"{product['category']:<15}"
+                f"{product.product_name:<12}"
+                f"{product.category:<15}"
                 f"₹{price:<10}"
                 f"{opening_stock:<11}"
                 f"{sold:<8}"

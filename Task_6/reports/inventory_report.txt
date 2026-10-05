@@ -1,0 +1,57 @@
+
+ INVENTORY REPORT
+
+Total Products  : 6
+Total Units     : 158
+Inventory Value : ₹596120.00
+
+PRODUCT DETAILS
+
+Product ID : P001
+Product    : Laptop
+Category   : Electronics
+Price      : ₹55000.00
+Quantity   : 10
+Stock Value: ₹550000.00
+
+Product ID : P003
+Product    : Keyboard
+Category   : Electronics
+Price      : ₹1500.00
+Quantity   : 14
+Stock Value: ₹21000.00
+
+Product ID : P002
+Product    : Mouse
+Category   : Electronics
+Price      : ₹800.00
+Quantity   : 20
+Stock Value: ₹16000.00
+
+Product ID : P006
+Product    : Headphones
+Category   : Electronics
+Price      : ₹200.00
+Quantity   : 25
+Stock Value: ₹5000.00
+
+Product ID : P004
+Product    : Notebook
+Category   : Stationery
+Price      : ₹80.00
+Quantity   : 39
+Stock Value: ₹3120.00
+
+Product ID : P005
+Product    : Pen
+Category   : Stationery
+Price      : ₹20.00
+Quantity   : 50
+Stock Value: ₹1000.00
+
+
+ LOW STOCK REPORT
+
+Low Stock Level : 5
+
+No low-stock products.

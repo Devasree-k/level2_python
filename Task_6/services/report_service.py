@@ -2,20 +2,21 @@ from config import REPORT_FILE, LOW_STOCK_LEVEL
 from repositories.json_repository import JSONRepository
 from utilities.inventory_utilities import get_low_stock_products
 
+from models.product_model import Product
 
 class ReportService:
 
     def __init__(self, repository: JSONRepository):
         self.repository = repository
 
-    def calculate_inventory_value(self, products: list[dict]) -> float:
+    def calculate_inventory_value(self, products: list[Product]) -> float:
         return sum(
             product["price"] * product["quantity"]
             for product in products
         )
 
-    def generate_report(self) -> None:
-        products = self.repository.read_products()
+    async def generate_report(self) -> None:
+        products = await self.repository.read_products()
 
         if not products:
             print("No products available.")
@@ -50,11 +51,11 @@ class ReportService:
                 for product in products_by_value:
                     product_value = product["price"] * product["quantity"]
 
-                    file.write(f"Product ID : {product['product_id']}\n")
-                    file.write(f"Product    : {product['product_name']}\n")
-                    file.write(f"Category   : {product['category']}\n")
-                    file.write(f"Price      : ₹{product['price']:.2f}\n")
-                    file.write(f"Quantity   : {product['quantity']}\n")
+                    file.write(f"Product ID : {product.product_id}\n")
+                    file.write(f"Product    : {product.product_name}\n")
+                    file.write(f"Category   : {product.category}\n")
+                    file.write(f"Price      : ₹{product.price:.2f}\n")
+                    file.write(f"Quantity   : {product.quantity}\n")
                     file.write(f"Stock Value: ₹{product_value:.2f}\n\n")
 
                 file.write("\n LOW STOCK REPORT\n\n")
@@ -70,10 +71,10 @@ class ReportService:
                     )
 
                     for product in low_stock_products:
-                        file.write(f"Product ID : {product['product_id']}\n")
-                        file.write(f"Product    : {product['product_name']}\n")
-                        file.write(f"Category   : {product['category']}\n")
-                        file.write(f"Quantity   : {product['quantity']}\n")
+                        file.write(f"Product ID : {product.product_id}\n")
+                        file.write(f"Product    : {product.product_name}\n")
+                        file.write(f"Category   : {product.category}\n")
+                        file.write(f"Quantity   : {product.quantity}\n")
                         file.write("-" * 50 + "\n")
 
             print("Complete report generated successfully.")

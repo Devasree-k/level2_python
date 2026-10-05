@@ -6,5 +6,21 @@
         "unit_price": 55000.0,
         "total_amount": 110000.0,
         "status": "Completed"
+    },
+    {
+        "order_id": "O002",
+        "product_id": "P003",
+        "quantity": 1,
+        "unit_price": 1500.0,
+        "total_amount": 1500.0,
+        "status": "Completed"
+    },
+    {
+        "order_id": "O003",
+        "product_id": "P004",
+        "quantity": 1,
+        "unit_price": 80.0,
+        "total_amount": 80.0,
+        "status": "Completed"
     }
 ]

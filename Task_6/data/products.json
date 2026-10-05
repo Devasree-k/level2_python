@@ -1,42 +1,42 @@
 [
-     {
+    {
         "product_id": "P001",
-        "name": "Laptop",
+        "product_name": "Laptop",
         "category": "Electronics",
         "price": 55000.0,
         "quantity": 10
     },
     {
         "product_id": "P002",
-        "name": "Mouse",
+        "product_name": "Mouse",
         "category": "Electronics",
         "price": 800.0,
         "quantity": 20
     },
     {
         "product_id": "P003",
-        "name": "Keyboard",
+        "product_name": "Keyboard",
         "category": "Electronics",
         "price": 1500.0,
-        "quantity": 15
+        "quantity": 14
     },
     {
         "product_id": "P004",
-        "name": "Notebook",
+        "product_name": "Notebook",
         "category": "Stationery",
         "price": 80.0,
-        "quantity": 40
+        "quantity": 39
     },
     {
         "product_id": "P005",
-        "name": "Pen",
+        "product_name": "Pen",
         "category": "Stationery",
         "price": 20.0,
         "quantity": 50
     },
     {
         "product_id": "P006",
-        "name": "Headphones",
+        "product_name": "Headphones",
         "category": "Electronics",
         "price": 200.0,
         "quantity": 25
