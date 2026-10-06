@@ -2,8 +2,8 @@
  INVENTORY REPORT
 
 Total Products  : 6
-Total Units     : 151
-Inventory Value : ₹592240.00
+Total Units     : 150
+Inventory Value : ₹590740.00
 
 PRODUCT DETAILS
 
@@ -18,8 +18,8 @@ Product ID : P003
 Product    : Keyboard
 Category   : Electronics
 Price      : ₹1500.00
-Quantity   : 12
-Stock Value: ₹18000.00
+Quantity   : 11
+Stock Value: ₹16500.00
 
 Product ID : P002
 Product    : Mouse

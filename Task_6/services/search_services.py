@@ -32,9 +32,7 @@ class SearchService:
             print("No products available.")
             return
 
-        name = input(
-            "Enter product name: "
-        ).strip().lower()
+        name = input( "Enter product name: ").strip().lower()
 
         results = [
             product

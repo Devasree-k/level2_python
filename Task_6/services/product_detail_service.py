@@ -38,11 +38,6 @@ class ProductDetailService:
                 if order.product_id == product_id
             )
 
-            # remaining = product["quantity"]
-            # opening_stock = remaining + sold
-            # sales_revenue = price * sold
-            # stock_value = price * remaining
-
             remaining = product.quantity
             opening_stock = remaining + sold
             sales_revenue = product.price * sold

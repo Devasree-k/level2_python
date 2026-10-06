@@ -86,8 +86,8 @@ class App:
                 print("Program interrupted.")
                 break
 
-            except Exception as error:
-                print(f"Unexpected error occurred: {error}")
+            # except Exception as error:
+            #     print(f"Unexpected error occurred: {error}")
 
 
 if __name__ == "__main__":
