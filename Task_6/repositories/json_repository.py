@@ -16,7 +16,7 @@ class JSONRepository:
         try:
             await asyncio.sleep(0)
 
-            with open(PRODUCT_FILE, "r", encoding="utf-8") as file:
+            with open(PRODUCT_FILE, "r") as file:
                 data = json.load(file)
 
             products = [
@@ -38,7 +38,7 @@ class JSONRepository:
 
     def write_products(self, products: list[Product]) -> None:
         try:
-            with open(PRODUCT_FILE, "w", encoding="utf-8") as file:
+            with open(PRODUCT_FILE, "w") as file:
                 json.dump([product.model_dump() for product in products], file, indent=4)
 
         except OSError as error:
@@ -48,7 +48,7 @@ class JSONRepository:
         orders = []
 
         try:
-            with open(ORDER_FILE, "r", encoding="utf-8") as file:
+            with open(ORDER_FILE, "r") as file:
                 data = json.load(file)
 
             orders = [
@@ -70,7 +70,7 @@ class JSONRepository:
 
     def write_orders(self, orders: list[Order]) -> None:
         try:
-            with open(ORDER_FILE, "w", encoding="utf-8") as file:
+            with open(ORDER_FILE, "w") as file:
                 json.dump( [order.model_dump() for order in orders], file, indent=4 )
 
         except OSError as error:
