@@ -10,7 +10,7 @@ class ProductService:
     def find_product(self, products: list[Product], product_id: str) -> Product | None:
         return next(
             (product for product in products
-             if product["product_id"] == product_id),
+             if product.product_id == product_id),
             None
         )
 

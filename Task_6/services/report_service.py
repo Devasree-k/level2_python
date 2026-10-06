@@ -3,6 +3,7 @@ from repositories.json_repository import JSONRepository
 from utilities.inventory_utilities import get_low_stock_products
 
 from models.product_model import Product
+from models.order_model import Order
 
 class ReportService:
 
@@ -11,7 +12,7 @@ class ReportService:
 
     def calculate_inventory_value(self, products: list[Product]) -> float:
         return sum(
-            product["price"] * product["quantity"]
+            product.price * product.quantity
             for product in products
         )
 
@@ -23,17 +24,17 @@ class ReportService:
             return
 
         total_products = len(products)
-        total_units = sum(product["quantity"] for product in products)
+        total_units = sum(product.quantity for product in products)
         total_value = self.calculate_inventory_value(products)
 
         products_by_value = sorted(
             products,
-            key=lambda product: product["price"] * product["quantity"],
+            key=lambda product: product.price * product.quantity,
             reverse=True
         )
 
         low_stock_products = get_low_stock_products(products)
-        low_stock_products.sort(key=lambda product: product["quantity"])
+        low_stock_products.sort(key=lambda product: product.quantity)
 
         try:
             REPORT_FILE.parent.mkdir(parents=True, exist_ok=True)
@@ -49,7 +50,7 @@ class ReportService:
                 file.write("\nPRODUCT DETAILS\n\n")
 
                 for product in products_by_value:
-                    product_value = product["price"] * product["quantity"]
+                    product_value = product.price * product.quantity
 
                     file.write(f"Product ID : {product.product_id}\n")
                     file.write(f"Product    : {product.product_name}\n")

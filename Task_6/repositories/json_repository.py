@@ -39,11 +39,7 @@ class JSONRepository:
     def write_products(self, products: list[Product]) -> None:
         try:
             with open(PRODUCT_FILE, "w", encoding="utf-8") as file:
-                json.dump(
-                    [product.model_dump() for product in products],
-                    file,
-                    indent=4
-                )
+                json.dump([product.model_dump() for product in products], file, indent=4)
 
         except OSError as error:
             print(f"Unable to save products: {error}")
@@ -75,11 +71,7 @@ class JSONRepository:
     def write_orders(self, orders: list[Order]) -> None:
         try:
             with open(ORDER_FILE, "w", encoding="utf-8") as file:
-                json.dump(
-                    [order.model_dump() for order in orders],
-                    file,
-                    indent=4
-                )
+                json.dump( [order.model_dump() for order in orders], file, indent=4 )
 
         except OSError as error:
             print(f"Unable to save orders: {error}")

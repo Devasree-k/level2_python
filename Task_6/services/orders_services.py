@@ -66,14 +66,14 @@ class OrderService:
 
         order_id = self.generate_order_id(orders)
 
-        order = {
-            "order_id": order_id,
-            "product_id": selected_product.product_id,
-            "quantity": quantity,
-            "unit_price": selected_product.price,
-            "total_amount": total_amount,
-            "status": "Completed"
-        }
+        order = Order(
+            order_id=order_id,
+            product_id=selected_product.product_id,
+            quantity=quantity,
+            unit_price=selected_product.price,
+            total_amount=total_amount,
+            status="Completed"
+        )
 
         selected_product.quantity -= quantity
         orders.append(order)
