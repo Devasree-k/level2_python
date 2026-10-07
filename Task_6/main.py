@@ -2,6 +2,8 @@ from config import APP_NAME
 
 import asyncio
 
+from exceptions.inventory_exceptions import (ProductNotFoundError, InsufficientStockError, InventoryError)
+
 from repositories.json_repository import JSONRepository
 
 from services.product_services import ProductService
@@ -85,6 +87,9 @@ class App:
             except KeyboardInterrupt:
                 print("Program interrupted.")
                 break
+
+            except InventoryError as e:
+                print(f"Inventory Issue : {e}")
 
             # except Exception as error:
             #     print(f"Unexpected error occurred: {error}")

@@ -1,6 +1,10 @@
 from repositories.json_repository import JSONRepository
 from services.product_services import ProductService
-
+from exceptions.inventory_exceptions import (
+    ProductNotFoundError,
+    InsufficientStockError
+)
+from models.product_model import Product
 from models.order_model import Order
 
 
@@ -22,7 +26,7 @@ class OrderService:
     def calculate_order_amount(self, price: float, quantity: int) -> float:
         return price * quantity
 
-    def validate_order(self, product: Order, quantity: int) -> bool:
+    def validate_order(self, product: Product, quantity: int) -> bool:
         return all([
             quantity > 0,
             quantity <= product.quantity,
@@ -55,9 +59,10 @@ class OrderService:
             if quantity <= 0:
                 print("Quantity must be greater than zero.")
             elif quantity > selected_product.quantity:
-                print(f"Insufficient stock. Available: {selected_product.quantity}")
+                # print(f"Insufficient stock. Available: {selected_product.quantity}")
+                raise InsufficientStockError(selected_product.quantity, quantity)
             else:
-                print("Product price is invalid.")
+                print("Product price is invalid.")  
             return
 
         total_amount = self.calculate_order_amount(

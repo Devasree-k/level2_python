@@ -1,18 +1,25 @@
 from repositories.json_repository import JSONRepository
 import asyncio
 from models.product_model import Product
+from exceptions.inventory_exceptions import ProductNotFoundError
 
 class ProductService:
 
     def __init__(self, repository: JSONRepository):
         self.repository = repository
 
-    def find_product(self, products: list[Product], product_id: str) -> Product | None:
-        return next(
+    def find_product(self, products: list[Product], product_id: str) -> Product:
+        product = next(
             (product for product in products
              if product.product_id == product_id),
             None
         )
+    
+        if product is None:
+            raise ProductNotFoundError(product_id)
+
+        return product
+
 
     def display_product(self, product: Product) -> None:
         print("PRODUCT DETAILS")
