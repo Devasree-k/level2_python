@@ -7,6 +7,9 @@ from exceptions.inventory_exceptions import (
 from models.product_model import Product
 from models.order_model import Order
 
+import logging
+
+logger = logging.getLogger(__name__)
 
 class OrderService:
 
@@ -38,6 +41,7 @@ class OrderService:
         orders = self.repository.read_orders()
 
         if not products:
+            logger.warning("No products available")
             print("No products available.")
             return
 
@@ -60,6 +64,7 @@ class OrderService:
                 print("Quantity must be greater than zero.")
             elif quantity > selected_product.quantity:
                 # print(f"Insufficient stock. Available: {selected_product.quantity}")
+                logger.warning( "Insufficient stock | Product=%s | Available=%d | Requested=%d",selected_product.product_id, selected_product.quantity, quantity)
                 raise InsufficientStockError(selected_product.quantity, quantity)
             else:
                 print("Product price is invalid.")  
@@ -94,6 +99,8 @@ class OrderService:
         print(f"Total Amount    : ₹{total_amount:.2f}")
         print(f"Remaining Stock : {selected_product.quantity}")
         print("Status          : Completed")
+
+        logger.info("Order created successfully | Order ID=%s | Product=%s | Quantity=%d", order_id, selected_product.product_id, quantity)
 
     def view_orders(self) -> None:
         orders = self.repository.read_orders()

@@ -13,6 +13,10 @@ from services.stock_service import StockService
 from services.report_service import ReportService
 from services.product_detail_service import ProductDetailService
 
+from utilities.logging_config import setup_logging
+import logging
+logger = logging.getLogger(__name__)
+
 
 class App:
 
@@ -75,6 +79,7 @@ class App:
                         await self.product_detail.display_product_details()
 
                     case 0:
+                        logger.info("Product Inventory application stopped")
                         print("Thank you")
                         break
 
@@ -96,6 +101,7 @@ class App:
 
 
 if __name__ == "__main__":
+    setup_logging()
     app = App()
     # app.run()
     asyncio.run(app.run())

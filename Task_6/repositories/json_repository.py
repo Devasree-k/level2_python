@@ -6,7 +6,9 @@ from pydantic import ValidationError
 from config import PRODUCT_FILE, ORDER_FILE
 from models.product_model import Product
 from models.order_model import Order
+import logging
 
+logger = logging.getLogger(__name__)
 
 class JSONRepository:
 
@@ -14,7 +16,7 @@ class JSONRepository:
         products = []
 
         try:
-            await asyncio.sleep(0)
+            await asyncio.sleep(1)
 
             with open(PRODUCT_FILE, "r") as file:
                 data = json.load(file)
@@ -26,12 +28,14 @@ class JSONRepository:
 
         except FileNotFoundError:
             print("Product file not found.")
+            logger.error("Product file not found: %s", PRODUCT_FILE)
 
         except json.JSONDecodeError:
             print("Invalid JSON data found in product.json.")
+            logger.error( "Invalid JSON data in product file: %s",  PRODUCT_FILE )
 
         except ValidationError as error:
-            print("Invalid product data.")
+            print("Invalid product data.")  
             print(error)
 
         return products
