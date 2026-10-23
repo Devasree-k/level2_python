@@ -4,7 +4,7 @@
         "product_name": "Laptop",
         "category": "Electronics",
         "price": 55000.0,
-        "quantity": 10
+        "quantity": 9
     },
     {
         "product_id": "P002",

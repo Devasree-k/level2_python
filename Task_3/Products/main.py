@@ -1,4 +1,6 @@
-from Day_3_Task.Products.utils.common import APP_NAME
+
+from utils.common import APP_NAME
+
 
 from utils.view import (
     view_products,
